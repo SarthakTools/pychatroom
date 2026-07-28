@@ -2,16 +2,19 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
+from kivy.metrics import dp, sp
 import threading, requests, socket
 
 KV="""
 #:kivy 2.2.1
+#:import dp kivy.metrics.dp
+#:import sp kivy.metrics.sp
 
 <Root>:
 
     orientation: "vertical"
-    padding: 12
-    spacing: 10
+    padding: dp(12)
+    spacing: dp(10)
 
     canvas.before:
         Color:
@@ -22,35 +25,38 @@ KV="""
 
     Label:
         text: "PyChat"
-        font_size: 28
+        font_size: sp(28)
         bold: True
         size_hint_y: None
-        height: 30
+        height: dp(40)
         color: 0.2,0.7,1,1
 
     Label:
         id: status
         text: "🔴 Offline"
+        font_size: sp(16)
         size_hint_y: None
-        height: 25
+        height: dp(30)
         color: .8,.8,.8,1
 
     TextInput:
         id: username
         hint_text: "Username"
         multiline: False
+        font_size: sp(16)
         size_hint_y: None
-        height: 45
+        height: dp(48)
         background_color: .16,.16,.18,1
         foreground_color: 1,1,1,1
         cursor_color: 1,1,1,1
-        padding: 10
+        padding: dp(10)
 
     Button:
         id: connect
         text: "Connect"
+        font_size: sp(16)
         size_hint_y: None
-        height: 45
+        height: dp(48)
         background_normal: ""
         background_color: .15,.55,.95,1
         color: 1,1,1,1
@@ -63,26 +69,30 @@ KV="""
         background_color: .13,.13,.15,1
         foreground_color: 1,1,1,1
         cursor_color: 1,1,1,1
-        font_size: 16
+        font_size: sp(16)
+        padding: dp(10)
 
     BoxLayout:
         size_hint_y: None
-        height: 50
-        spacing: 8
+        height: dp(52)
+        spacing: dp(8)
 
         TextInput:
             id: message
             hint_text: "Type a message..."
             multiline: False
+            font_size: sp(16)
             background_color: .16,.16,.18,1
             foreground_color: 1,1,1,1
             cursor_color: 1,1,1,1
+            padding: dp(10)
             on_text_validate: root.send()
 
         Button:
             text: "Send"
+            font_size: sp(16)
             size_hint_x: None
-            width: 90
+            width: dp(90)
             background_normal: ""
             background_color: .15,.55,.95,1
             color: 1,1,1,1
