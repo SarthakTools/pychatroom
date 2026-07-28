@@ -9,7 +9,7 @@ source.include_exts = py,png,jpg,kv,atlas
 
 version = 1.0
 
-requirements = python3,kivy==2.2.1,requests,urllib3,certifi,chardet,idna,charset_normalizer
+requirements = python3,kivy==2.2.1,cython==0.29.33,requests,urllib3,certifi,chardet,idna,charset_normalizer
 
 orientation = portrait
 fullscreen = 0
@@ -20,7 +20,7 @@ android.api = 33
 android.minapi = 21
 android.ndk = 25b
 android.accept_sdk_license = True
-android.archs = arm64-v8a, armeabi-v7a
+android.archs = arm64-v8a
 
 [buildozer]
 log_level = 2
