@@ -292,7 +292,9 @@ class ChatClient:
         self.callback = None
 
     def load_server(self):
-        return "127.0.0.1", 8080
+        url = "https://raw.githubusercontent.com/SarthakTools/pychat/main/config.json"
+        config = requests.get(url, timeout=5).json()
+        return config["host"], int(config["port"])
 
     def connect(self, username, callback):
         self.username = username
