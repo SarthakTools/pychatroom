@@ -15,7 +15,7 @@ from datetime import datetime
 import threading, requests, socket
 import re
 from kivy.core.window import Window
-Window.softinput_mode = 'resize' 
+Window.softinput_mode = 'below_target'
 
 KV = """
 #:kivy 2.2.1
@@ -292,10 +292,7 @@ class ChatClient:
         self.callback = None
 
     def load_server(self):
-        url = "https://raw.githubusercontent.com/SarthakTools/pychat/main/config.json"
-        config = requests.get(url, timeout=5).json()
-        return config["host"], int(config["port"])
-        # return "127.0.0.1", 8080
+        return "127.0.0.1", 8080
 
     def connect(self, username, callback):
         self.username = username
@@ -410,10 +407,10 @@ class Root(BoxLayout):
             self.add_date_separator()
             self._date_added = True
 
-        try:
-            now = datetime.now().strftime("%-I:%M %p").lower()
-        except ValueError:
-            now = datetime.now().strftime("%I:%M %p").lstrip("0").lower()
+        dt_now = datetime.now()
+        hour_12 = dt_now.hour % 12
+        hour_12 = 12 if hour_12 == 0 else hour_12
+        now = dt_now.strftime(f"{hour_12}:%M %p").lower()
 
         # Create the bubble
         bubble = MessageBubble()
