@@ -194,16 +194,7 @@ KV = """
                     size_hint_y: None
                     height: dp(48)
                     spacing: dp(10)
-
-                    # RoundedButton:
-                    #     text: "+"
-                    #     accent_color: 0.42, 0.34, 0.78, 1
-                    #     size_hint_x: None
-                    #     width: dp(46)
-                    #     height: dp(16)
-                    #     font_size: sp(15)
-                    #     on_release: root.add_system_message("Attachments coming soon")
-
+                    
                 # typing status label (appears above the input box)
                 Label:
                     id: typing_status
@@ -221,15 +212,6 @@ KV = """
                     size_hint_y: None
                     height: dp(48)
                     spacing: dp(10)
-
-                    # RoundedButton:
-                    #     text: "+"
-                    #     accent_color: 0.42, 0.34, 0.78, 1
-                    #     size_hint_x: None
-                    #     width: dp(46)
-                    #     height: dp(16)
-                    #     font_size: sp(15)
-                    #     on_release: root.add_system_message("Attachments coming soon")
 
                     MDTextField:
                         id: message
@@ -454,10 +436,9 @@ class ChatClient:
         self._recv_buffer = ""
 
     def load_server(self):
-        # url = "https://raw.githubusercontent.com/SarthakTools/pychat/main/config.json"
-        # config = requests.get(url, timeout=5).json()
-        # return config["host"], int(config["port"])
-        return "127.0.0.1",8080
+        url = "https://raw.githubusercontent.com/SarthakTools/pychat/main/config.json"
+        config = requests.get(url, timeout=5).json()
+        return config["host"], int(config["port"])
 
     def connect(self, username, callback):
         self.username = username
