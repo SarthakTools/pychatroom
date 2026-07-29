@@ -1,8 +1,8 @@
 [app]
 
-title = PyChat
-package.name = pychat
-package.domain = org.pychat
+title = MayBee
+package.name = maybee
+package.domain = org.maybee
 
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
