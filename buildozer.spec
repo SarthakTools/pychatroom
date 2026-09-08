@@ -20,7 +20,7 @@ android.api = 33
 android.minapi = 21
 android.ndk = 25b
 android.accept_sdk_license = True
-android.archs = arm64-v8a
+android.arch = armeabi-v7a, arm64-v8a
 
 # Pin p4a to the stable master branch (not develop, which requires
 # Python 3.14 and is still unstable as of mid-2026)
